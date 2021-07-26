@@ -1,0 +1,27 @@
+{
+  "name": "aws-service",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "watch": "tsc --watch",
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "build": "npm run build:esm && npm run build:cjs",
+    "prepublish": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^16.4.2",
+    "aws-sdk": "^2.953.0",
+    "dotenv": "^10.0.0"
+  }
+}
