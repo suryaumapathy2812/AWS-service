@@ -10,6 +10,13 @@
     "dist",
     "src"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suryaumapathy2812/AWS-service.git"
+  },
   "engines": {
     "node": ">=14"
   },
