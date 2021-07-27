@@ -805,9 +805,9 @@ try {
 var AwsDAO = /*#__PURE__*/function () {
   function AwsDAO() {
     this.s3 = this.connectS3();
-    this.bucket = process.env.bucket_name || "";
-    this.access_key = process.env.access_key_id || "";
-    this.secretAccessKey = process.env.secret_access_key || "";
+    this.bucket = process.env.bucket_name || '';
+    this.access_key = process.env.access_key_id || '';
+    this.secretAccessKey = process.env.secret_access_key || '';
   }
 
   var _proto = AwsDAO.prototype;
