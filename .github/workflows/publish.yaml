@@ -19,4 +19,4 @@ jobs:
       # Publish to GitHub Packages
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.workflow_token }}
+          NODE_AUTH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
