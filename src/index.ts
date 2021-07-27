@@ -1,5 +1,3 @@
-'use strict';
-
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 import S3 from 'aws-sdk/clients/s3';
@@ -14,12 +12,10 @@ import S3 from 'aws-sdk/clients/s3';
 //     signatureVersimport config from "./config"ion: 'v4'
 // });
 
-
 export interface fileUploadOptions {
   buffer: Buffer;
   filePath: string;
 }
-
 
 export class AwsDAO {
   s3: S3;
@@ -29,9 +25,9 @@ export class AwsDAO {
 
   constructor() {
     this.s3 = this.connectS3();
-    this.bucket = process.env.bucket_name || "";
-    this.access_key = process.env.access_key_id || "";
-    this.secretAccessKey = process.env.secret_access_key || "";
+    this.bucket = process.env.bucket_name || '';
+    this.access_key = process.env.access_key_id || '';
+    this.secretAccessKey = process.env.secret_access_key || '';
   }
 
   private connectS3() {
@@ -42,14 +38,13 @@ export class AwsDAO {
         accessKeyId: this.access_key,
         secretAccessKey: this.secretAccessKey,
       },
-      signatureVersion: 'v4'
+      signatureVersion: 'v4',
     });
   }
 
-
   /**
    * Upload files to AWS S3 bucket
-   * 
+   *
    * @param  {fileUploadOptions} file
    */
   async fileUpload(file: fileUploadOptions) {
@@ -61,22 +56,22 @@ export class AwsDAO {
     return this.s3.upload(params).promise();
   }
 
-
   getFileSignedUrl(Key: string): Promise<string | any> {
     return new Promise((resolve, reject) => {
       console.log('--- getFileSignedUrl : Key :', Key);
       const params = { Bucket: this.bucket, Key };
-      this.s3.getSignedUrlPromise('getObject', params)
-        .then((res) => {
+      this.s3
+        .getSignedUrlPromise('getObject', params)
+        .then(res => {
           console.log(res);
           resolve(res);
-        }).catch((error) => {
+        })
+        .catch(error => {
           console.log(error);
           reject(error);
-        })
-    })
+        });
+    });
   }
-
 
   getFileAsBuffer(Key: string): Promise<Buffer | any> {
     return new Promise((resolve, reject) => {
@@ -84,7 +79,7 @@ export class AwsDAO {
         console.log('--- getFileAsBuffer  : Key :', Key);
         const params = {
           Bucket: this.bucket,
-          Key: Key
+          Key: Key,
         };
         this.s3.getObject(params, (err, data) => {
           if (err) {
@@ -92,10 +87,10 @@ export class AwsDAO {
           } else {
             resolve(data.Body);
           }
-        })
+        });
       } catch (error) {
         reject(error);
       }
-    })
+    });
   }
 }
