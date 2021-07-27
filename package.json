@@ -1,7 +1,7 @@
 {
-  "name": "aws-service",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@suryaumapathy2812/aws-service",
+  "version": "1.0.1",
+  "description": "Node JS Client for AWS-SDK",
   "type": "module",
   "main": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
@@ -15,6 +15,13 @@
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "build": "npm run build:esm && npm run build:cjs",
     "prepublish": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suryaumapathy2812/AWS-service.git"
   },
   "keywords": [],
   "author": "",
